@@ -50,7 +50,7 @@
     "json-schema-traverse": "^1.0.0"
   },
   "devDependencies": {
-    "@ava/typescript": "^1.1.1",
+    "@ava/typescript": "3.0.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
