@@ -5,10 +5,9 @@
  * Copyright (c) 2021 Dr. Maximillian Dornseif
  */
 
-import test from 'ava';
-import { JSONSchema7 } from 'json-schema';
-
-import { jsonEmptyStrings } from './json-schema-empty-strings';
+import { JSONSchema7 } from 'json-schema'
+import { jsonEmptyStrings } from './json-schema-empty-strings'
+import { expect, test } from 'vitest'
 
 const myschema: JSONSchema7 = {
   $id: 'https://huwawi3.hudora.de/schemata/H3Test',
@@ -43,15 +42,15 @@ const myschema: JSONSchema7 = {
       },
     },
   },
-};
+}
 
-test('handles num', (t) => {
-  t.deepEqual(jsonEmptyStrings(myschema), {
+test('handles num', () => {
+  expect(jsonEmptyStrings(myschema)).toStrictEqual({
     s1: '',
     s2: '',
     s3: '',
     sub: {
       s1: '',
     },
-  });
-});
+  })
+})
