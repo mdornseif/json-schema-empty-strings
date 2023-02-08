@@ -2,6 +2,7 @@
   "name": "json-schema-empty-strings",
   "version": "1.0.2",
   "description": "Generate empty strings for all JSON-Schema string fields.",
+  "homepage": "https://mdornseif.github.io/json-schema-empty-strings/",
   "repository": {
     "type": "git"
   },
