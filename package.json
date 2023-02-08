@@ -72,9 +72,6 @@
   "engines": {
     "node": ">=16"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "size-limit": [
     {
       "limit": "10 KB",
