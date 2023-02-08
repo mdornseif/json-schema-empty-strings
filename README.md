@@ -1,6 +1,6 @@
 ![NPM License](https://img.shields.io/npm/l/json-schema-empty-strings)
 [![NPM Version](https://img.shields.io/npm/v/json-schema-empty-strings)](https://www.npmjs.com/package/json-schema-empty-strings)
-[![NPM Types](https://img.shields.ionpm/types/json-schema-empty-strings)](https://www.npmjs.com/package/json-schema-empty-strings)
+[![NPM Types](https://img.shields.io/npm/types/json-schema-empty-strings)](https://www.npmjs.com/package/json-schema-empty-strings)
 [![Last Commit](https://img.shields.io/github/last-commit/mdornseif/json-schema-empty-strings)](https://github.com/mdornseif/json-schema-empty-strings)
 
 # json-schema-empty-strings
@@ -21,10 +21,10 @@ For a given schema `jsonEmptyStrings()` generates an object containing empty str
 The output can easily [merged](https://www.npmjs.com/package/lodash.merge) with your existing data to get empty strings instead of missing properties.
 
 ```js
-import { jsonEmptyStrings } from 'json-schema-empty-strings';
-import merge from 'lodash.merge';
+import { jsonEmptyStrings } from 'json-schema-empty-strings'
+import merge from 'lodash.merge'
 
-const finalData = merge({}, jsonEmptyStrings(schema), inputData);
+const finalData = merge({}, jsonEmptyStrings(schema), inputData)
 ```
 
 Iy you have `null` or `undefined` values in your data [deep-clean](https://www.npmjs.com/package/clean-deep) them before merging:
