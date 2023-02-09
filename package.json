@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.2",
-    "@storybook/storybook-deployer": "^2.8.16",
     "@tsconfig/recommended": "^1.0.2",
     "dts-cli": "^1.6.3",
     "gh-pages": "^5.0.0",
