@@ -43,5 +43,5 @@ const finalData = merge({}, jsonEmptyStrings(schema), cleanDeep(inputData, {
 
 # See also:
 
-- [json-schema-default](https://www.npmjs.com/package/json-schema-default)
 - [json-schema-empty](https://www.npmjs.com/package/json-schema-empty)
+- [json-schema-default](https://www.npmjs.com/package/json-schema-default)
