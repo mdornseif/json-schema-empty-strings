@@ -1,40 +1,66 @@
 {
-  "name": "json-schema-empty-strings",
-  "version": "1.0.2",
-  "description": "Generate empty strings for all JSON-Schema string fields.",
-  "homepage": "https://mdornseif.github.io/json-schema-empty-strings/",
-  "repository": {
-    "type": "git"
-  },
-  "license": "MIT",
   "author": "Maximillian Dornseif",
-  "main": "dist/index.js",
-  "module": "dist/json-schema-empty-strings.esm.js",
-  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "json-schema-traverse": "^1.0.0"
+  },
+  "description": "Generate empty strings for all JSON-Schema string fields.",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.4",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@tsconfig/recommended": "^1.0.2",
+    "@tsconfig/vite-react": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": ">7.0.0",
+    "@typescript-eslint/parser": ">7.0.0",
+    "eslint": ">8.0.0",
+    "eslint-config-prettier": ">8.0.0",
+    "eslint-plugin-eslint-comments": ">2.0.0",
+    "eslint-plugin-import": ">2.0.0",
+    "eslint-plugin-react-hooks": ">3.0.0",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "gh-pages": "^6.1.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.4",
+    "sort-package-json": "^2.4.1",
+    "tslib": "^2.5.0",
+    "typedoc": ">0.20.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3",
+    "vitest": "^1.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
     "dist",
-    "src"
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
   ],
-  "scripts": {
-    "analyze": "size-limit --why",
-    "build": "dts build",
-    "doc:build": "npx typedoc@0.23  --skipErrorChecking  src/index.ts",
-    "doc:publish": "gh-pages -m \"[ci skip] Documentation Updates\" -d docs",
-    "lint": "dts lint",
-    "prepare": "husky install ; dts build",
-    "size": "size-limit",
-    "start": "dts watch",
-    "test": "TZ=utc vitest --passWithNoTests",
-    "unimported": "npx unimported; npx findead src"
-  },
+  "homepage": "https://mdornseif.github.io/json-schema-empty-strings/",
+  "license": "MIT",
   "lint-staged": {
-    "*{css,scss,md,markdown,json,yaml,yml,graphql,html}": "prettier -w",
+    "*{css,scss,md,markdown,json,yaml,yml,graphql,html}": "npx prettier -w",
     "*{js,jsx,ts,tsx}": [
-      "prettier -w",
-      "dts lint --fix"
+      "npx prettier -w",
+      "npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix"
     ],
-    "package*json": "sort-package-json"
+    "package*json": "npx sort-package-json"
   },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "name": "json-schema-default",
   "prettier": {
     "printWidth": 110,
     "semi": false,
@@ -44,40 +70,37 @@
   "release": {
     "branches": [
       "main",
+      "master",
       "next"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@semantic-release/npm"
     ]
   },
-  "jest": {
-    "testEnvironment": "node"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdornseif/json-schema-default"
   },
-  "dependencies": {
-    "json-schema-traverse": "^1.0.0",
-    "vitest": "^0.28.4"
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "doc": "npx typedoc --out docs src/index.ts",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && tsc --noEmit",
+    "prepare": "husky",
+    "preview": "vite preview",
+    "size": "npx vite-bundle-visualizer -t sunburst # npx source-map-explorer dist/index.js",
+    "test": "TZ=utc vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "TZ=utc vitest watch",
+    "unimported": "npx findead src ; npx unimported; npx depcheck",
+    "update": "npx npm-check-updates --interactive -m"
   },
-  "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.1.2",
-    "@tsconfig/recommended": "^1.0.2",
-    "dts-cli": "^1.6.3",
-    "gh-pages": "^5.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.1",
-    "size-limit": "^8.1.2",
-    "sort-package-json": "^2.4.1",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.1"
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "size-limit": [
-    {
-      "limit": "10 KB",
-      "path": "dist/json-schema-empty-strings.cjs.production.min.js"
-    },
-    {
-      "limit": "10 KB",
-      "path": "dist/json-schema-empty-strings.esm.js"
-    }
-  ]
+  "type": "module",
+  "typings": "dist/index.d.ts",
+  "version": "1.0.2"
 }

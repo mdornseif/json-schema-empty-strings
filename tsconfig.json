@@ -1,7 +1,8 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
-  "include": ["src", "types"],
   "compilerOptions": {
-    "module": "esnext"
-  }
+    "noImplicitAny": false,
+    "strict": false
+  },
+  "extends": "@tsconfig/vite-react/tsconfig.json",
+  "include": ["src", "test/render-template-string.test.ts"]
 }

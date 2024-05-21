@@ -7,7 +7,7 @@ import traverse from 'json-schema-traverse'
 /** Returns an Object containing `""` for all strings in the Schema.
  */
 export function jsonEmptyStrings(schema: JSONSchema7): unknown {
-  const ret: Record<string, Record<string, any> | {}> = {}
+  const ret: Record<string, Record<string, unknown> | object> = {}
   traverse(schema, {}, (sch, jsonPtr, _root, parentJsonPtr, _parentKeyword, _parentSchema, indexProperty) => {
     if (jsonPtr.startsWith('/properties/')) {
       // um Nesting korrekt abzubilden müssten wir jsonPtr auseindander pflücken
