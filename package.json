@@ -93,7 +93,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.4",
     "sort-package-json": "^2.10.0",
-    "tslib": "^2.5.0",
+    "tslib": "^2.6.2",
     "typedoc": ">0.20.0",
     "typescript": "^5.0.0",
     "vite": "^5.1.4",
